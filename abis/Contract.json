@@ -1,0 +1,121 @@
+[
+  {
+    "type": "event",
+    "name": "NewHash",
+    "inputs": [
+      {
+        "type": "string",
+        "name": "hash",
+        "internalType": "string",
+        "indexed": false
+      },
+      {
+        "type": "address",
+        "name": "hashSubmitter",
+        "internalType": "address",
+        "indexed": false
+      },
+      {
+        "type": "bytes",
+        "name": "feesParameters",
+        "internalType": "bytes",
+        "indexed": false
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "WhitelistedAddressAdded",
+    "inputs": [
+      {
+        "type": "address",
+        "name": "addr",
+        "internalType": "address",
+        "indexed": false
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "WhitelistedAddressRemoved",
+    "inputs": [
+      {
+        "type": "address",
+        "name": "addr",
+        "internalType": "address",
+        "indexed": false
+      }
+    ],
+    "anonymous": false
+  },
+  { "type": "fallback", "stateMutability": "nonpayable", "payable": false },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "addAddressToWhitelist",
+    "inputs": [
+      { "type": "address", "name": "addr", "internalType": "address" }
+    ],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "addAddressesToWhitelist",
+    "inputs": [
+      { "type": "address[]", "name": "addrs", "internalType": "address[]" }
+    ],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "declareNewHash",
+    "inputs": [
+      { "type": "string", "name": "_hash", "internalType": "string" },
+      { "type": "bytes", "name": "_feesParameters", "internalType": "bytes" }
+    ],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "view",
+    "payable": false,
+    "outputs": [{ "type": "bool", "name": "", "internalType": "bool" }],
+    "name": "isWhitelisted",
+    "inputs": [
+      { "type": "address", "name": "addr", "internalType": "address" }
+    ],
+    "constant": true
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "removeAddressFromWhitelist",
+    "inputs": [
+      { "type": "address", "name": "addr", "internalType": "address" }
+    ],
+    "constant": false
+  },
+  {
+    "type": "function",
+    "stateMutability": "nonpayable",
+    "payable": false,
+    "outputs": [],
+    "name": "removeAddressesFromWhitelist",
+    "inputs": [
+      { "type": "address[]", "name": "addrs", "internalType": "address[]" }
+    ],
+    "constant": false
+  }
+]

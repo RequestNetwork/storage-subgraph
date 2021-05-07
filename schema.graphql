@@ -1,0 +1,19 @@
+type Transaction @entity {
+  "a unique ID based on IPFS hash & position of the transaction in the document"
+  id: ID!
+  "IPFS hash"
+  hash: String!
+  channelId: String!
+  data: String
+
+  encryptedData: String
+  encryptionMethod: String
+  publicKeys: [String!]
+  encryptedKeys: [String!]
+
+  blockNumber: Int!
+  blockTimestamp: Int!
+  transactionHash: String!
+  smartContractAddress: String!
+  topics: [String!]
+}
