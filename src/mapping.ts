@@ -63,18 +63,12 @@ export function handleNewHash(event: NewHash): void {
     let entity = new Transaction(ipfsHash + "-" + index.toString());
     let transaction = transactions[index].toObject();
 
-    if (!topics.isSet(channelId)) {
-      log.warning("Could not find channel {} in IPFS document {}", [
-        channelId,
-        ipfsHash
-      ]);
-      continue;
-    }
-
-    let topicsJsonVal = topics.get(channelId)!.toArray();
     let topicList: string[] = [];
-    for (let i = 0; i < topicsJsonVal.length; ++i) {
-      topicList.push(topicsJsonVal[i].toString());
+    if (topics.isSet(channelId)) {
+      let topicsJsonVal = topics.get(channelId)!.toArray();
+      for (let i = 0; i < topicsJsonVal.length; ++i) {
+        topicList.push(topicsJsonVal[i].toString());
+      }
     }
 
     entity.hash = ipfsHash;
