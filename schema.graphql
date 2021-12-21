@@ -15,5 +15,6 @@ type Transaction @entity {
   blockTimestamp: Int!
   transactionHash: String!
   smartContractAddress: String!
+  size: String!
   topics: [String!]
 }

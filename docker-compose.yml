@@ -1,7 +1,7 @@
 version: "3"
 services:
   graph-node:
-    image: graphprotocol/graph-node
+    image: graphprotocol/graph-node:v0.25.0
     ports:
       - "8000:8000"
       - "8001:8001"
@@ -17,14 +17,30 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: "ipfs:5001"
-      ethereum: xdai:https://rpc.xdaichain.com/
+      ethereum: $NETWORK:$WEB3_URL
       RUST_LOG: info
+      GRAPH_ALLOW_NON_DETERMINISTIC_IPFS: 1
   ipfs:
     image: requestnetwork/request-ipfs:0.4.23-1
     ports:
       - "5001:5001"
     # volumes:
     #   - ./data/ipfs:/data/ipfs
+  ganache:
+    image: trufflesuite/ganache-cli
+    ports:
+      - 8545:8545
+    command:
+      - "-l"
+      - "90000000"
+      - "-m"
+      - "candy maple cake sugar pudding cream honey rich smooth crumble sweet treat"
+  request-contracts:
+    image: requestnetwork/request-contracts:bfdc43f
+    environment:
+      WEB3_URL: http://ganache:8545
+    depends_on:
+      - ganache
   postgres:
     image: postgres
     ports:
