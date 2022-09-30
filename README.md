@@ -27,7 +27,17 @@ docker-compose up -d
 yarn create-local ./subgraph-private.yaml
 ```
 
-- Deploy and start indexing. Do this if you modify the [indexer's code](./src/mapping.ts) or the [graphql schema](./schema.graphql)
+- Generate types for the subgraph. Do this again if you modify the [indexer's code](./src/mapping.ts) or the [graphql schema](./schema.graphql)
+```
+yarn codegen ./subgraph-private.yaml
+```
+
+- Build the subgraph. Do this again if you modify the [indexer's code](./src/mapping.ts) or the [graphql schema](./schema.graphql)
+```
+yarn build ./subgraph-private.yaml
+```
+
+- Deploy and start indexing. Do this again if you modify the [indexer's code](./src/mapping.ts) or the [graphql schema](./schema.graphql)
 ```
 yarn deploy-local ./subgraph-private.yaml
 ```
@@ -95,6 +105,11 @@ query ByChannelId($topics:[String!]) {
 }
 ```
 
+## Ports forwarding required to deploy on Kubernetes (example on Goerli)
+```
+kubectl port-forward -n production graph-goerli-node-0 8020:8020
+kubectl port-forward -n production ipfs-goerli-request-ipfs-0 5001:5001
+```
 
 ## Run on another network
 To test this on another network than your local Ganache:
