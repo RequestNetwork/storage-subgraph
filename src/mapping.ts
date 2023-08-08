@@ -104,13 +104,11 @@ export function handleNewHash(event: NewHash): void {
       }
     } else if (transaction.isSet("data")) {
       let data = transaction.getEntry("data")!.value;
-        try {
-          entity.data = data.toString();
-        }
-        catch (e) {
-          log.warning("IPFS document {} has a invalid data field", [ipfsHash]);
-          return;
-        }
+      if(data.kind === JSONValueKind.STRING) {
+        log.warning("IPFS document {} has a invalid data field", [ipfsHash]);
+        return;
+      }
+      entity.data = data.toString();
     } else {
       log.warning(
         "IPFS document {} has a neither data or encryptedData field",
