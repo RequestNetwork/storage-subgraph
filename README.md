@@ -55,6 +55,12 @@ yarn build ./subgraph-private.yaml
 yarn deploy-local ./subgraph-private.yaml
 ```
 
+- Monitor the deployment of your new subgraph
+
+```
+yarn monitor-deployment-local
+```
+
 You can go to http://localhost:8000/ to see the GraphiQL ui.
 
 ## Example queries

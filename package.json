@@ -10,7 +10,7 @@
     "create-local": "graph create --node http://localhost:8020/ RequestNetwork/request-storage --access-token ''",
     "remove-local": "graph remove --node http://localhost:8020/ RequestNetwork/request-storage --access-token ''",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 RequestNetwork/request-storage --access-token ''",
-    "monitor-deployment": "ts-node cli/monitor.ts"
+    "monitor-deployment-local": "ts-node cli/monitor.ts"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "^0.54.0",
