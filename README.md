@@ -42,8 +42,8 @@ yarn codegen ./subgraph-private.yaml
 yarn test
 ```
 
-- Build the subgraph. Do this again if you modify the [indexer's code](./src/mapping.ts) or the [graphql schema](./schema.graphql), 
-or if you want to deploy on another chain.
+- Build the subgraph. Do this again if you modify the [indexer's code](./src/mapping.ts) or the [graphql schema](./schema.graphql),
+  or if you want to deploy on another chain.
 
 ```
 yarn build ./subgraph-private.yaml
