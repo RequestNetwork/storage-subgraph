@@ -78,8 +78,9 @@ const monitor = async () => {
       indexingStatusForPendingVersion: GraphNodeStatus;
     }>("http://localhost:8030/graphql", statusQuery);
 
-  if (!indexingStatusForPendingVersion.health) {
-    throw new Error("No deployment in progress");
+  if (!indexingStatusForPendingVersion) {
+    console.warn("No deployment in progress");
+    return;
   }
 
   const chainHeadBlock = parseInt(
