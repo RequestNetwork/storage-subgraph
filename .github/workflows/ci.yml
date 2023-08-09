@@ -23,7 +23,7 @@ jobs:
       - name: "Install modules"
         run: yarn install --frozen-lockfile
       - name: "Format check"
-        run: pnpm prettier:ci
+        run: yarn prettier:ci
       - name: "Generate types"
         run: yarn codegen ./subgraph-private.yaml
       - name: "Run tests"
