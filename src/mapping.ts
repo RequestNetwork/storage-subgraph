@@ -36,7 +36,7 @@ export function handleNewHash(event: NewHash): void {
 
   if (!doc.isSet("header") || !doc.isSet("transactions")) {
     log.warning("IPFS document {} has a no header or transactions field", [
-      ipfsHash
+      ipfsHash,
     ]);
     return;
   }
@@ -45,7 +45,7 @@ export function handleNewHash(event: NewHash): void {
   if (!header.isSet("channelIds") || !header.isSet("topics")) {
     log.warning(
       "IPFS document {} has a no header.channelIds or header.topics",
-      [ipfsHash]
+      [ipfsHash],
     );
     return;
   }
@@ -55,10 +55,7 @@ export function handleNewHash(event: NewHash): void {
 
   for (let txIndex = 0; txIndex < channelIds.length; ++txIndex) {
     let channelId = channelIds[txIndex].key;
-    let index = channelIds[txIndex].value
-      .toArray()[0]
-      .toBigInt()
-      .toI32();
+    let index = channelIds[txIndex].value.toArray()[0].toBigInt().toI32();
     log.info("parsing channelId {} for ipfsId {}", [channelId, ipfsHash]);
     let entity = new Transaction(ipfsHash + "-" + index.toString());
     let transaction = transactions[index].toObject();
@@ -104,7 +101,7 @@ export function handleNewHash(event: NewHash): void {
       }
     } else if (transaction.isSet("data")) {
       let data = transaction.getEntry("data")!.value;
-      if(data.kind !== JSONValueKind.STRING) {
+      if (data.kind !== JSONValueKind.STRING) {
         log.warning("IPFS document {} has a invalid data field", [ipfsHash]);
         return;
       }
@@ -112,7 +109,7 @@ export function handleNewHash(event: NewHash): void {
     } else {
       log.warning(
         "IPFS document {} has a neither data or encryptedData field",
-        [ipfsHash]
+        [ipfsHash],
       );
     }
     entity.save();
