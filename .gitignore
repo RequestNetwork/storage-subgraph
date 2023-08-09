@@ -6,5 +6,5 @@
 /build/
 /generated/
 /.env
-/tests/bin/
+/tests/.bin/
 /tests/.latest.json
