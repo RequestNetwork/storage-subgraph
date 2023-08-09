@@ -112,6 +112,12 @@ const monitor = async () => {
       Math.round(indexingStatus * 10000) / 100
     }%`,
   );
+
+  if (indexingStatusForPendingVersion.fatalError) {
+    console.warn(
+      `[Pending deployment] ERROR: ${indexingStatusForPendingVersion.fatalError}`,
+    );
+  }
 };
 
 void monitor();
