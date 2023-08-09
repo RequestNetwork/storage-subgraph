@@ -10,9 +10,7 @@
   },
   "transactions": [
     {
-      "data": {
-        "data": "This object should be a string"
-      }
+      "data": "data as a string"
     }
   ]
 }
