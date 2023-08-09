@@ -1,0 +1,18 @@
+{
+  "header": {
+    "channelIds": {
+      "channel1": [0]
+    },
+    "topics": {
+      "channel1": ["topic1"]
+    },
+    "version": "0.1.0"
+  },
+  "transactions": [
+    {
+      "data": {
+        "data": "This object should be a string"
+      }
+    }
+  ]
+}

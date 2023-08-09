@@ -1,4 +1,10 @@
-node_modules
-build
-generated
-.env
+# -----------------------
+# .prettierignore is a symbolic link to this files
+# do not create .gitignore files in subdirectories if you want its entries to be ignored by Prettier
+# -----------------------
+/node_modules/
+/build/
+/generated/
+/.env
+/tests/.bin/
+/tests/.latest.json
