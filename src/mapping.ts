@@ -104,7 +104,7 @@ export function handleNewHash(event: NewHash): void {
       }
     } else if (transaction.isSet("data")) {
       let data = transaction.getEntry("data")!.value;
-      if(data.kind === JSONValueKind.STRING) {
+      if(data.kind !== JSONValueKind.STRING) {
         log.warning("IPFS document {} has a invalid data field", [ipfsHash]);
         return;
       }

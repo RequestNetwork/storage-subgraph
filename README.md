@@ -37,6 +37,11 @@ yarn codegen ./subgraph-private.yaml
 yarn build ./subgraph-private.yaml
 ```
 
+- Test the subgraph with [matchstick-as](https://thegraph.com/docs/en/developing/unit-testing-framework/#calling-a-mapping-function-with-an-event)
+```
+yarn test
+```
+
 - Deploy and start indexing. Do this again if you modify the [indexer's code](./src/mapping.ts) or the [graphql schema](./schema.graphql)
 ```
 yarn deploy-local ./subgraph-private.yaml

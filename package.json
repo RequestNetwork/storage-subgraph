@@ -2,15 +2,21 @@
   "name": "storage-subgraph",
   "license": "MIT",
   "scripts": {
+    "prettier": "prettier --write .",
     "codegen": "graph codegen",
     "build": "graph build",
+    "test": "graph test",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ RequestNetwork/request-storage",
     "create-local": "graph create --node http://localhost:8020/ RequestNetwork/request-storage --access-token ''",
     "remove-local": "graph remove --node http://localhost:8020/ RequestNetwork/request-storage --access-token ''",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 RequestNetwork/request-storage --access-token ''"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.25.1",
-    "@graphprotocol/graph-ts": "0.24.1"
+    "@graphprotocol/graph-cli": "^0.54.0",
+    "@graphprotocol/graph-ts": "^0.31.0"
+  },
+  "devDependencies": {
+    "matchstick-as": "^0.5.2",
+    "prettier": "^3.0.1"
   }
 }
