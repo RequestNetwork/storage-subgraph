@@ -9,14 +9,18 @@
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ RequestNetwork/request-storage",
     "create-local": "graph create --node http://localhost:8020/ RequestNetwork/request-storage --access-token ''",
     "remove-local": "graph remove --node http://localhost:8020/ RequestNetwork/request-storage --access-token ''",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 RequestNetwork/request-storage --access-token ''"
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 RequestNetwork/request-storage --access-token ''",
+    "monitor-deployment": "ts-node cli/monitor.ts"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "^0.54.0",
     "@graphprotocol/graph-ts": "^0.31.0"
   },
   "devDependencies": {
+    "graphql-request": "^6.1.0",
     "matchstick-as": "^0.5.2",
-    "prettier": "^3.0.1"
+    "prettier": "^3.0.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   }
 }
