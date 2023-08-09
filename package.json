@@ -3,6 +3,7 @@
   "license": "MIT",
   "scripts": {
     "prettier": "prettier --write .",
+    "prettier:ci": "prettier --check .",
     "codegen": "graph codegen",
     "build": "graph build",
     "test": "graph test",

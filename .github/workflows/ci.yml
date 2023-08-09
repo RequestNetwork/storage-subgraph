@@ -1,0 +1,30 @@
+name: ci
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v3
+      - name: "Setup Node"
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "yarn"
+      - name: "Install modules"
+        run: yarn install --frozen-lockfile
+      - name: "Format check"
+        run: pnpm prettier:ci
+      - name: "Generate types"
+        run: yarn codegen ./subgraph-private.yaml
+      - name: "Run tests"
+        run: yarn test
