@@ -27,7 +27,7 @@ docker-compose up -d
 - Create the subgraph. Do this only once (or each time you clear the Graph node)
 
 ```
-yarn create-local ./subgraph-private.yaml
+yarn create-local
 ```
 
 - Generate types for the subgraph. Do this again if you modify the [indexer's code](./src/mapping.ts) or the [graphql schema](./schema.graphql)
