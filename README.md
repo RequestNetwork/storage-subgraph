@@ -125,13 +125,6 @@ query ByChannelId($topics: [String!]) {
 }
 ```
 
-## Ports forwarding required to deploy on Kubernetes (example on Goerli)
-
-```
-kubectl port-forward -n production graph-goerli-node-0 8020:8020
-kubectl port-forward -n production ipfs-goerli-request-ipfs-0 5001:5001
-```
-
 ## Run on another network
 
 To test this on another network than your local Ganache:
