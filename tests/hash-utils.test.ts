@@ -13,7 +13,7 @@ describe("objectToJsonString", () => {
       objectToJsonString(["a", "b", "c"], ["3", "2", "1"]),
     );
   });
-  test("keeps sorted array", () => {
+  test("sorts reversed array", () => {
     assert.stringEquals(
       '{"a":"3","b":"2","c":"1"}',
       objectToJsonString(["c", "b", "a"], ["1", "2", "3"]),
