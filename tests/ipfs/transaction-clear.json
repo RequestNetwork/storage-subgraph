@@ -4,7 +4,7 @@
       "channel1": [0]
     },
     "topics": {
-      "channel1": ["topic1"]
+      "channel1": ["topic1", "topic2"]
     },
     "version": "0.1.0"
   },

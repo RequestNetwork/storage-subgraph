@@ -3,8 +3,7 @@ import { NewHash } from "../generated/Contract/Contract";
 import { Address, Bytes, ethereum } from "@graphprotocol/graph-ts";
 import { handleNewHash } from "../src/mapping";
 
-export const processIpfs = (fileName: string): void => {
-  const ipfsHash = "testIpfsHash";
+export const processIpfs = (fileName: string, ipfsHash: string): void => {
   mockIpfsFile(ipfsHash, `tests/ipfs/${fileName}`);
 
   // @ts-ignore
