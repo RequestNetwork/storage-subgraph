@@ -40,6 +40,8 @@ yarn codegen ./subgraph-private.yaml
 
 ```
 yarn test
+# or, run in Docker
+yarn test -d
 ```
 
 - Build the subgraph. Do this again if you modify the [indexer's code](./src/mapping.ts) or the [graphql schema](./schema.graphql),

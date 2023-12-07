@@ -1,0 +1,20 @@
+{
+  "header": {
+    "channelIds": {
+      "channel1": [0]
+    },
+    "topics": {
+      "channel1": ["topic1"]
+    },
+    "version": "0.1.0"
+  },
+  "transactions": [
+    {
+      "encryptedData": "04ijCiPLRZW+EAE9NENV8WOCjVhOMn4wtIkS+IDLlZaLNqm7NED0sV9LZuQbmubJLJduRCZ9wYvOjPwu4kFaqD7rOFKqN2tFi++iEgPLADGnIoeNXBFo5eS0ekTFqVuV0M3iHFlxmfvWLYOnDwbyheFcrk/nqF1M0quqQdtt1S839wZL9n6Torz6zHhDto52whIX9Y3PNt4uKO+bGHaixKTn8DylHDUuwrCDjSQHDWmZndNwe+EEk+6NefAfD19NJX74pMEcrZw7d2bQKl0eGyFYkG1g6ISZiZxDCodUSjV5kCJJwm3ha7eTr9J/g97EePJSc+e5dXt8aVCtm17BpHBGOTPqHKiLGL79LS3wZyk6JXUD92j13aaGSR9j/xUjErxp1v3o3SR098CmTSfRO4khLykcV51FY8wsz3GhBHoCvN00aNl95YN+KpmuwyRVYbtLnYqPMk2hVRAgxq1zaZK3mLb/tjAGl5i3A1lcY504JRUAvb2Ye/Rg6XW/GAwN7gVw1+0Q3afdBrKJbaiKnnUD7cPFIb+3Na/D+0s3dd003TzY/ESJOn+J44ItsOL8deKnlKaNVmnEbJN/dvovYFQ+zFU6paO5oqsM3Ea/6hPUBQwyzr/YGnWPSC+y3awQBtbAq8XsUHWOWm94KVhDR64OjWaYjvoXCmtFWDzvG1ACMvKv3f2CcNTz4JcDFCB3cjmJOXbp99ywHyAM6EtkMfNS4w01ZfA+X9UgjY",
+      "keys": {
+        "20af083f77f1ffd54218d91491afd06c9296eac3ce": "02d23775d7cabbc6a3895e1f4be4d522f00237c9c4f8b3623f57e76e6608ab6f0d0f683b878d7e755fcb95fdd56b9f69c0ca8edc6f8a6350dbae9f4698046470b6784a208e4c6039f93dda00f33b4eec6bdbfa1ffb4bd6b4dff145149564336bd6768dfb22986cfb883959c529205b4192def31c40324fc06aad462c3585f4409cd6"
+      },
+      "encryptionMethod": "ecies-aes256-gcm"
+    }
+  ]
+}

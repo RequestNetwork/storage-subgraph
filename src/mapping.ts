@@ -1,7 +1,7 @@
 import { Bytes, ipfs, json, JSONValueKind, log } from "@graphprotocol/graph-ts";
 import { NewHash } from "../generated/Contract/Contract";
 import { Transaction } from "../generated/schema";
-
+import { computeHash, serializeTransaction } from "./hash-utils";
 /**
  * Handle a NewHash event
  */
@@ -112,6 +112,7 @@ export function handleNewHash(event: NewHash): void {
         [ipfsHash],
       );
     }
+    entity.dataHash = computeHash(serializeTransaction(entity));
     entity.save();
   }
 }
