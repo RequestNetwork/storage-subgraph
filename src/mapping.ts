@@ -76,11 +76,6 @@ export function handleNewHash(event: NewHash): void {
         topicList.push(topic);
         if (!channel.topics.includes(topic)) {
           channelTopicList.push(topic);
-          log.debug("added {} to channel {} ({})", [
-            topic,
-            channelId,
-            channelTopicList.length.toString(),
-          ]);
         }
       }
     }
