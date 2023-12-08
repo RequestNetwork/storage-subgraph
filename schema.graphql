@@ -25,7 +25,7 @@ type Transaction @entity {
 type Channel @entity {
   "the channelId"
   id: ID!
-  "all topics of a channel"
+  "combined topics of all transactions in the channel"
   topics: [String!]!
   transactions: [Transaction!]! @derivedFrom(field: "channel")
 }
