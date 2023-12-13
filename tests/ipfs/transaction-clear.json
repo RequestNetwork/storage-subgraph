@@ -1,0 +1,16 @@
+{
+  "header": {
+    "channelIds": {
+      "channel1": [0]
+    },
+    "topics": {
+      "channel1": ["topic1"]
+    },
+    "version": "0.1.0"
+  },
+  "transactions": [
+    {
+      "data": "{\"data\":{\"name\":\"create\",\"parameters\":{\"currency\":{\"type\":\"ISO4217\",\"value\":\"USD\"},\"expectedAmount\":\"1000\",\"payee\":{\"type\":\"ethereumAddress\",\"value\":\"0x627306090abab3a6e1400e9345bc60c78a8bef57\"},\"payer\":{\"type\":\"ethereumAddress\",\"value\":\"0xf17f52151ebef6c7334fad080c5704d77216b732\"},\"extensionsData\":[],\"timestamp\":1701173554},\"version\":\"2.0.3\"},\"signature\":{\"method\":\"ecdsa\",\"value\":\"0x0406ef3942dd1a3ffcc8cd5134d35f46417942b77d068e37b719dd419b063bc4278501e1141172d29e6a2e910e15b00b521d7615d33e022b437accf10fb599091b\"}}"
+    }
+  ]
+}
