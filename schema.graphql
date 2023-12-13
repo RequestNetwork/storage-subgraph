@@ -1,7 +1,7 @@
 type Transaction @entity {
   "a unique ID based on IPFS hash & position of the transaction in the document"
   id: ID!
-  "IPFS hash of the block containing this transaction"
+  "IPFS hash (CID) of the block containing this transaction"
   hash: String!
   "the keccak256 hash of the transaction's contents"
   dataHash: String!
