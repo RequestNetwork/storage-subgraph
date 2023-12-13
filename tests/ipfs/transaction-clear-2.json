@@ -1,0 +1,16 @@
+{
+  "header": {
+    "channelIds": {
+      "channel1": [0]
+    },
+    "topics": {
+      "channel1": ["topic1", "topic3"]
+    },
+    "version": "0.1.0"
+  },
+  "transactions": [
+    {
+      "data": "subsequent transaction for channel1, with different topics"
+    }
+  ]
+}

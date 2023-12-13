@@ -1,6 +1,6 @@
 import { Bytes, ipfs, json, JSONValueKind, log } from "@graphprotocol/graph-ts";
 import { NewHash } from "../generated/Contract/Contract";
-import { Transaction } from "../generated/schema";
+import { Channel, Transaction } from "../generated/schema";
 import { computeHash, serializeTransaction } from "./hash-utils";
 /**
  * Handle a NewHash event
@@ -43,10 +43,9 @@ export function handleNewHash(event: NewHash): void {
 
   let header = doc.get("header")!.toObject();
   if (!header.isSet("channelIds") || !header.isSet("topics")) {
-    log.warning(
-      "IPFS document {} has a no header.channelIds or header.topics",
-      [ipfsHash],
-    );
+    log.warning("IPFS document {} has no header.channelIds or header.topics", [
+      ipfsHash,
+    ]);
     return;
   }
   let channelIds = header.get("channelIds")!.toObject().entries;
@@ -57,16 +56,31 @@ export function handleNewHash(event: NewHash): void {
     let channelId = channelIds[txIndex].key;
     let index = channelIds[txIndex].value.toArray()[0].toBigInt().toI32();
     log.info("parsing channelId {} for ipfsId {}", [channelId, ipfsHash]);
-    let entity = new Transaction(ipfsHash + "-" + index.toString());
+    let entityId = ipfsHash + "-" + index.toString();
+    let entity = new Transaction(entityId);
+    let channel = Channel.load(channelId);
+    if (!channel) {
+      log.debug("new channel {}", [channelId]);
+      channel = new Channel(channelId);
+      channel.topics = [];
+    }
     let transaction = transactions[index].toObject();
+    entity.channel = channelId;
 
     let topicList: string[] = [];
+    let channelTopicList = channel.topics;
     if (topics.isSet(channelId)) {
       let topicsJsonVal = topics.get(channelId)!.toArray();
       for (let i = 0; i < topicsJsonVal.length; ++i) {
-        topicList.push(topicsJsonVal[i].toString());
+        let topic = topicsJsonVal[i].toString();
+        topicList.push(topic);
+        if (!channel.topics.includes(topic)) {
+          channelTopicList.push(topic);
+        }
       }
     }
+    channelTopicList.sort();
+    channel.topics = channelTopicList;
 
     entity.hash = ipfsHash;
     entity.channelId = channelId;
@@ -114,5 +128,6 @@ export function handleNewHash(event: NewHash): void {
     }
     entity.dataHash = computeHash(serializeTransaction(entity));
     entity.save();
+    channel.save();
   }
 }

@@ -6,6 +6,7 @@ type Transaction @entity {
   "the keccak256 hash of the transaction's contents"
   dataHash: String!
   channelId: String!
+  channel: Channel!
   data: String
 
   encryptedData: String
@@ -19,4 +20,12 @@ type Transaction @entity {
   smartContractAddress: String!
   size: String!
   topics: [String!]
+}
+
+type Channel @entity {
+  "the channelId"
+  id: ID!
+  "combined topics of all transactions in the channel"
+  topics: [String!]!
+  transactions: [Transaction!]! @derivedFrom(field: "channel")
 }
