@@ -6,7 +6,7 @@ features:
 dataSources:
   - kind: ethereum/contract
     name: Contract
-    network: sepolia 
+    network: sepolia
     source:
       address: "0xd6c085A4D14e9e171f4aF58F7F48bd81173f167E"
       abi: Contract
