@@ -11,7 +11,7 @@
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ RequestNetwork/request-storage",
     "create-local": "graph create --node http://localhost:8020/ RequestNetwork/request-storage",
     "remove-local": "graph remove --node http://localhost:8020/ RequestNetwork/request-storage",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 RequestNetwork/request-storage",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 --version-label $(git rev-parse --short HEAD) RequestNetwork/request-storage",
     "monitor-deployment-local": "ts-node cli/monitor.ts"
   },
   "dependencies": {

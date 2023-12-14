@@ -1,0 +1,26 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+features:
+  - ipfsOnEthereumContracts
+dataSources:
+  - kind: ethereum/contract
+    name: Contract
+    network: sepolia
+    source:
+      address: "0xd6c085A4D14e9e171f4aF58F7F48bd81173f167E"
+      abi: Contract
+      startBlock: 4734914
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - NewHash
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: NewHash(string,address,bytes)
+          handler: handleNewHash
+      file: ./src/mapping.ts
