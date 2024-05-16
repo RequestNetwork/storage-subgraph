@@ -2,9 +2,9 @@ addReviewers: true
 addAssignees: false
 
 reviewers:
-  - benjlevesque
   - alexandre-abrioux
   - MantisClone
+  - leoslr
 
 # Set 0 to add all the reviewers (default: 0)
 numberOfReviewers: 0
