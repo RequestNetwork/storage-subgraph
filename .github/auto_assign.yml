@@ -2,7 +2,6 @@ addReviewers: true
 addAssignees: false
 
 reviewers:
-  - benjlevesque
   - alexandre-abrioux
   - MantisClone
 
