@@ -8,7 +8,7 @@ import { computeHash, serializeTransaction } from "./hash-utils";
 export function handleNewHash(event: NewHash): void {
   let ipfsHash = event.params.hash;
   let transactionId = event.transaction.hash.toHex();
-  let blockTimestampString = event.block.timestamp.toString()
+  let blockTimestampString = event.block.timestamp.toString();
 
   log.info(
     "Retrieving and parsing IPFS hash {}, transaction ID {}, timestamp {}",
