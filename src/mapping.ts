@@ -8,18 +8,18 @@ import { computeHash, serializeTransaction } from "./hash-utils";
 export function handleNewHash(event: NewHash): void {
   let ipfsHash = event.params.hash;
   let transactionId = event.transaction.hash.toHex();
-  let blockTimestampString = event.block.timestamp.toString();
+  let blockNumberString = event.block.number.toString();
 
   log.info(
-    "Retrieving and parsing IPFS hash {}, transaction ID {}, timestamp {}",
-    [ipfsHash, transactionId, blockTimestampString],
+    "Retrieving and parsing IPFS hash {}, transaction ID {}, block {}",
+    [ipfsHash, transactionId, blockNumberString],
   );
 
   let data = ipfs.cat(ipfsHash);
   if (!data) {
     log.warning(
-      "Could not retrieve IPFS hash {} from transaction ID {}, timestamp {}",
-      [ipfsHash, transactionId, blockTimestampString],
+      "Could not retrieve IPFS hash {} from transaction ID {}, block {}",
+      [ipfsHash, transactionId, blockNumberString],
     );
     return;
   }
@@ -27,16 +27,16 @@ export function handleNewHash(event: NewHash): void {
 
   if (!jsonValue.isOk) {
     log.warning(
-      "Parsing failed for IPFS hash {} from transaction ID {}, timestamp {}",
-      [ipfsHash, transactionId, blockTimestampString],
+      "Parsing failed for IPFS hash {} from transaction ID {}, block {}",
+      [ipfsHash, transactionId, blockNumberString],
     );
     return;
   }
 
   if (jsonValue.value.kind !== JSONValueKind.OBJECT) {
     log.warning(
-      "Invalid JSON in IPFS hash {} from transaction ID {}, timestamp {}",
-      [ipfsHash, transactionId, blockTimestampString],
+      "Invalid JSON in IPFS hash {} from transaction ID {}, block {}",
+      [ipfsHash, transactionId, blockNumberString],
     );
     return;
   }
@@ -49,8 +49,8 @@ export function handleNewHash(event: NewHash): void {
 
   if (!doc.isSet("header") || !doc.isSet("transactions")) {
     log.warning(
-      "No header or transactions field in IPFS hash {} from transaction ID {}, timestamp {}",
-      [ipfsHash, transactionId, blockTimestampString],
+      "No header or transactions field in IPFS hash {} from transaction ID {}, block {}",
+      [ipfsHash, transactionId, blockNumberString],
     );
     return;
   }
@@ -58,8 +58,8 @@ export function handleNewHash(event: NewHash): void {
   let header = doc.get("header")!.toObject();
   if (!header.isSet("channelIds") || !header.isSet("topics")) {
     log.warning(
-      "No header.channelIds or header.topics in IPFS hash {} from transaction ID {}, timestamp {}",
-      [ipfsHash, transactionId, blockTimestampString],
+      "No header.channelIds or header.topics in IPFS hash {} from transaction ID {}, block {}",
+      [ipfsHash, transactionId, blockNumberString],
     );
     return;
   }
@@ -71,8 +71,8 @@ export function handleNewHash(event: NewHash): void {
     let channelId = channelIds[txIndex].key;
     let index = channelIds[txIndex].value.toArray()[0].toBigInt().toI32();
     log.info(
-      "Parsing channelId {} for IPFS hash {} from transaction ID {}, timestamp {}",
-      [channelId, ipfsHash, transactionId, blockTimestampString],
+      "Parsing channelId {} for IPFS hash {} from transaction ID {}, block {}",
+      [channelId, ipfsHash, transactionId, blockNumberString],
     );
     let entityId = ipfsHash + "-" + index.toString();
     let entity = new Transaction(entityId);
@@ -135,16 +135,16 @@ export function handleNewHash(event: NewHash): void {
       let data = transaction.getEntry("data")!.value;
       if (data.kind !== JSONValueKind.STRING) {
         log.warning(
-          "Invalid data field in IPFS hash {} from transaction ID {}, timestamp {}",
-          [ipfsHash, transactionId, blockTimestampString],
+          "Invalid data field in IPFS hash {} from transaction ID {}, block {}",
+          [ipfsHash, transactionId, blockNumberString],
         );
         return;
       }
       entity.data = data.toString();
     } else {
       log.warning(
-        "Neither data or encryptedData found in IPFS hash {} from transaction ID {}, timestamp {}",
-        [ipfsHash, transactionId, blockTimestampString],
+        "Neither data or encryptedData found in IPFS hash {} from transaction ID {}, block {}",
+        [ipfsHash, transactionId, blockNumberString],
       );
     }
     entity.dataHash = computeHash(serializeTransaction(entity));
