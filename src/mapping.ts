@@ -10,10 +10,11 @@ export function handleNewHash(event: NewHash): void {
   let transactionId = event.transaction.hash.toHex();
   let blockNumberString = event.block.number.toString();
 
-  log.info(
-    "Retrieving and parsing IPFS hash {}, transaction ID {}, block {}",
-    [ipfsHash, transactionId, blockNumberString],
-  );
+  log.info("Retrieving and parsing IPFS hash {}, transaction ID {}, block {}", [
+    ipfsHash,
+    transactionId,
+    blockNumberString,
+  ]);
 
   let data = ipfs.cat(ipfsHash);
   if (!data) {
