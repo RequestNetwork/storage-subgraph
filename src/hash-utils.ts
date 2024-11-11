@@ -53,7 +53,7 @@ export function objectToJsonString(keys: string[], values: string[]): string {
   let result = new Array<string>(keys.length);
 
   for (let i = 0; i < keys.length; ++i) {
-    result[i] = `${addQuotes(keys[i])}:${addQuotes(values[i])}`;
+    result[i] = `${addQuotes(keys[i])}:${addQuotes(values[i].replaceAll('"', '\\\"'))}`;
   }
 
   return "{" + result.sort().join(",") + "}";
